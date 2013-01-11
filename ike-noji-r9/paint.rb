@@ -36,9 +36,17 @@ door.each_with_index do |col, i|
         end
       end
     end
-    p paintable
+
+    if paintable
+      (0...brush_size).each do |k|
+        (0...brush_size).each do |l|
+          if door[i+k].nil? || door[i+k][j+l].nil?
+            next
+          end
+          door[i+k][j+l].painted = true
+        end
+      end
+    end
   end
 end
-
-#  if paintable
 
