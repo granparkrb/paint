@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require_relative "../lib/paint.rb"
+
+unless ARGV[0] && File.exist?(ARGV[0])
+  puts "door file not given"
+  exit 1
+end
+
+x = Paint.new(open(ARGV[0]).read)
+puts x.brash_size
