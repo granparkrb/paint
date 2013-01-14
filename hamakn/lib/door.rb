@@ -4,7 +4,7 @@ class Door
   def initialize(filepath)
     lines = File.read(filepath).split("\n")
     @size = lines.size
-    @panels = lines.each_with_index.map { |item, i| item.split(//) }
+    @panels = lines.map { |line| line.split(//) }
   end
 
   def panel(h, w)
@@ -16,7 +16,7 @@ class Door
   def brush_size
     (
       @size.times.map { |h| brush_size_for_line(horizonal_line(h)) } +
-      @size.times.map { |v| brush_size_for_line(vartical_line(v)) }
+      @size.times.map { |w| brush_size_for_line(vartical_line(w)) }
     ).compact.min
   end
 
@@ -27,8 +27,8 @@ private
   end
 
   # 縦一列を配列で返す
-  def vartical_line(h)
-    @panels.map { |line| line[h] }
+  def vartical_line(w)
+    @panels.map { |line| line[w] }
   end
 
   # 0と1からなるpanelの配列を引数に取り、0の連なりの最小値を返す
