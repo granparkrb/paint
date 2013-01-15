@@ -12,8 +12,8 @@ describe Door do
       it { expect(@door.panel(6, 3)).to eq("0") }
       it { expect(@door.panel(3, 6)).to eq("1") }
       it { expect(@door.panel(6, 6)).to eq("0") }
-      it { expect(lambda { @door.panel(7, 7) }).to raise_error }
-      it { expect(lambda { @door.panel(-1, -1) }).to raise_error }
+      it { expect { @door.panel(7, 7) }.to raise_error }
+      it { expect { @door.panel(-1, -1) }.to raise_error }
     end
   end
 
